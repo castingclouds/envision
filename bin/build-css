@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+# Build Tailwind CSS with DaisyUI
+echo "Building CSS with Tailwind and DaisyUI..."
+NODE_PATH="$(npm root -g)" ./bin/rails tailwindcss:build
+
+echo "CSS build completed!"

@@ -1,84 +1,270 @@
-<div class="min-h-screen bg-gradient-to-br from-indigo-100 to-white">
-  <div class="container mx-auto px-4 py-12">
-    <!-- Hero Section -->
-    <div class="flex flex-col items-center text-center mb-16">
-      <h1 class="text-5xl font-bold text-indigo-800 mb-4">Envision</h1>
-      <p class="text-xl text-gray-600 max-w-2xl">A modern approach to code review, migrating Gerrit to a cutting-edge Rails application</p>
-      <div class="mt-8 flex space-x-4">
-        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105">Get Started</button>
-        <button class="border border-indigo-600 text-indigo-600 hover:bg-indigo-50 font-semibold py-2 px-6 rounded-lg shadow-md transition duration-300 ease-in-out">Learn More</button>
-      </div>
-    </div>
-
-    <!-- Features Section -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-          </svg>
+<div class="flex flex-col min-h-screen">
+  <!-- Header section -->  
+  <header class="bg-base-100 shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex">
+          <div class="flex-shrink-0 flex items-center">
+            <span class="text-xl font-bold text-base-content">Envision</span>
+          </div>
+          <nav class="hidden sm:ml-6 sm:flex sm:space-x-8">
+            <a href="#" class="border-primary text-base-content inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Dashboard
+            </a>
+            <a href="#" class="border-transparent text-base-content/60 hover:border-base-300 hover:text-base-content inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Portfolios
+            </a>
+            <a href="#" class="border-transparent text-base-content/60 hover:border-base-300 hover:text-base-content inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Applications
+            </a>
+            <a href="#" class="border-transparent text-base-content/60 hover:border-base-300 hover:text-base-content inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
+              Projects
+            </a>
+          </nav>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-2">Portfolio Management</h3>
-        <p class="text-gray-600">Organize your work with a hierarchical structure of portfolios containing applications and projects.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
+        <div class="hidden sm:ml-6 sm:flex sm:items-center">
+          <!-- Theme toggle button -->
+          <label class="swap swap-rotate mr-4">
+            <!-- this hidden checkbox controls the state -->
+            <input type="checkbox" class="theme-controller" data-theme-target="toggle" data-action="change->theme#toggle" />
+            <!-- sun icon -->
+            <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z"/></svg>
+            <!-- moon icon -->
+            <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z"/></svg>
+          </label>
+          
+          <!-- Profile dropdown -->
+          <div class="ml-3 relative">
+            <div>
+              <button type="button" class="bg-base-100 rounded-full flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary" id="user-menu-button">
+                <span class="sr-only">Open user menu</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-base-content/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-2">Modern Code Review</h3>
-        <p class="text-gray-600">Experience a streamlined review process with enhanced features and a user-friendly interface.</p>
-      </div>
-
-      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-        <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center mb-4">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        </div>
-        <h3 class="text-xl font-semibold text-gray-800 mb-2">Seamless Migration</h3>
-        <p class="text-gray-600">Transition from Gerrit with our phased approach ensuring data integrity and minimal disruption.</p>
-      </div>
-    </div>
-
-    <!-- Data Model Section -->
-    <div class="bg-white p-8 rounded-xl shadow-md mb-16">
-      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">Hierarchical Data Model</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="border border-indigo-200 rounded-lg p-4 bg-indigo-50">
-          <h3 class="text-xl font-semibold text-indigo-700 mb-2">Portfolio</h3>
-          <p class="text-gray-600 mb-3">Top level organization unit</p>
-          <ul class="text-sm text-gray-700 space-y-1">
-            <li class="flex items-center"><span class="w-24 font-medium">Attributes:</span> name, description</li>
-            <li class="flex items-center"><span class="w-24 font-medium">Relations:</span> has_many applications</li>
-          </ul>
-        </div>
-
-        <div class="border border-indigo-200 rounded-lg p-4 bg-indigo-50">
-          <h3 class="text-xl font-semibold text-indigo-700 mb-2">Application</h3>
-          <p class="text-gray-600 mb-3">Middle level organization unit</p>
-          <ul class="text-sm text-gray-700 space-y-1">
-            <li class="flex items-center"><span class="w-24 font-medium">Attributes:</span> name, description, portfolio_id</li>
-            <li class="flex items-center"><span class="w-24 font-medium">Relations:</span> belongs_to portfolio, has_many projects</li>
-          </ul>
-        </div>
-
-        <div class="border border-indigo-200 rounded-lg p-4 bg-indigo-50">
-          <h3 class="text-xl font-semibold text-indigo-700 mb-2">Project</h3>
-          <p class="text-gray-600 mb-3">Bottom level organization unit</p>
-          <ul class="text-sm text-gray-700 space-y-1">
-            <li class="flex items-center"><span class="w-24 font-medium">Attributes:</span> name, description, path, application_id</li>
-            <li class="flex items-center"><span class="w-24 font-medium">Relations:</span> belongs_to application</li>
-          </ul>
+        <!-- Mobile menu button -->
+        <div class="-mr-2 flex items-center sm:hidden">
+          <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-base-content/70 hover:text-base-content hover:bg-base-200 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary" aria-controls="mobile-menu" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>
 
-    <!-- Footer -->
-    <div class="text-center text-gray-500 text-sm">
-      <p>Envision &copy; 2025 | MIT License</p>
+    <!-- Mobile menu, show/hide based on menu state. -->
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="pt-2 pb-3 space-y-1">
+        <a href="#" class="bg-primary/10 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Dashboard</a>
+        <a href="#" class="border-transparent text-base-content/60 hover:bg-base-200 hover:border-base-300 hover:text-base-content block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Portfolios</a>
+        <a href="#" class="border-transparent text-base-content/60 hover:bg-base-200 hover:border-base-300 hover:text-base-content block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Applications</a>
+        <a href="#" class="border-transparent text-base-content/60 hover:bg-base-200 hover:border-base-300 hover:text-base-content block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Projects</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content section -->
+  <main class="flex-grow">
+    <!-- Hero section -->
+    <div class="bg-base-200 py-12 sm:py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+          <h1 class="text-3xl font-extrabold tracking-tight text-base-content sm:text-4xl md:text-5xl">
+            <span class="block">Envision</span>
+            <span class="block text-primary">Modern Code Review</span>
+          </h1>
+          <p class="mt-3 max-w-md mx-auto text-base text-base-content/70 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
+            A modern approach to code review, migrating Gerrit to a cutting-edge Rails application
+          </p>
+          <div class="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+            <div class="rounded-md shadow">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary-content bg-primary hover:bg-primary-focus md:py-4 md:text-lg md:px-10">
+                Get started
+              </a>
+            </div>
+            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-base-100 hover:bg-base-200 md:py-4 md:text-lg md:px-10">
+                Learn more
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features section -->
+    <div class="py-12 bg-base-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:text-center">
+          <h2 class="text-base text-primary font-semibold tracking-wide uppercase">Features</h2>
+          <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-base-content sm:text-4xl">
+            A better way to review code
+          </p>
+          <p class="mt-4 max-w-2xl text-xl text-base-content/70 lg:mx-auto">
+            Envision provides a modern, intuitive interface for code review with enhanced features.
+          </p>
+        </div>
+
+        <div class="mt-10">
+          <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10">
+            <div class="relative">
+              <dt>
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-content">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                  </svg>
+                </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-base-content">Portfolio Management</p>
+              </dt>
+              <dd class="mt-2 ml-16 text-base text-base-content/70">
+                Organize your work with a hierarchical structure of portfolios containing applications and projects.
+              </dd>
+            </div>
+
+            <div class="relative">
+              <dt>
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-content">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-base-content">Modern Code Review</p>
+              </dt>
+              <dd class="mt-2 ml-16 text-base text-base-content/70">
+                Experience a streamlined review process with enhanced features and a user-friendly interface.
+              </dd>
+            </div>
+
+            <div class="relative">
+              <dt>
+                <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-content">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
+                  </svg>
+                </div>
+                <p class="ml-16 text-lg leading-6 font-medium text-base-content">Seamless Migration</p>
+              </dt>
+              <dd class="mt-2 ml-16 text-base text-base-content/70">
+                Transition from Gerrit with our phased approach ensuring data integrity and minimal disruption.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </div>
+    </div>
+
+  <!-- Data Model section -->
+  <div class="py-12 bg-base-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-extrabold tracking-tight text-base-content">Hierarchical Data Model</h2>
+      <div class="mt-6 overflow-hidden shadow ring-1 ring-base-content/10 md:rounded-lg">
+        <table class="min-w-full divide-y divide-base-300">
+          <thead class="bg-base-200">
+            <tr>
+              <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-base-content sm:pl-6">Level</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-base-content">Entity</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-base-content">Attributes</th>
+              <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-base-content">Relationships</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-base-200 bg-base-100">
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-base-content sm:pl-6">Top</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">Portfolio</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">name, description</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">has_many applications</td>
+            </tr>
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-base-content sm:pl-6">Middle</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">Application</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">name, description, portfolio_id</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">belongs_to portfolio, has_many projects</td>
+            </tr>
+            <tr>
+              <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-base-content sm:pl-6">Bottom</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">Project</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">name, description, path, application_id</td>
+              <td class="whitespace-nowrap px-3 py-4 text-sm text-base-content/70">belongs_to application</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
+
+  <!-- Migration Progress section -->
+  <div class="py-12 bg-base-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-extrabold tracking-tight text-base-content">Migration Progress</h2>
+      <div class="mt-6 space-y-4">
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">Analysis</span>
+            <span class="text-sm font-medium text-primary">100%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 100%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">Design</span>
+            <span class="text-sm font-medium text-primary">80%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 80%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">Implementation</span>
+            <span class="text-sm font-medium text-primary">45%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">UI Development</span>
+            <span class="text-sm font-medium text-primary">60%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 60%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">Data Migration</span>
+            <span class="text-sm font-medium text-primary">20%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 20%"></div>
+          </div>
+        </div>
+        <div>
+          <div class="flex justify-between mb-1">
+            <span class="text-sm font-medium text-primary">Testing</span>
+            <span class="text-sm font-medium text-primary">10%</span>
+          </div>
+          <div class="w-full bg-base-200 rounded-full h-2.5">
+            <div class="bg-primary h-2.5 rounded-full" style="width: 10%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </main>
+
+  <!-- Footer section -->
+  <footer class="bg-base-100 mt-auto">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 border-t border-base-200">
+      <p class="text-center text-sm text-base-content/70">Envision &copy; 2025 | MIT License</p>
+    </div>
+  </footer>
 </div>

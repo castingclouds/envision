@@ -1,0 +1,7 @@
+{
+  "name": "envision",
+  "private": true,
+  "dependencies": {
+    "daisyui": "^5.0.9"
+  }
+}

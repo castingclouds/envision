@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, bumblebee, cupcake, corporate, emerald, synthwave;
+}
+
+@layer components {
+  /* Add any custom component styles here */
+}
