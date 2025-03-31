@@ -1,0 +1,33 @@
+<%= form_with(model: team, class: "space-y-6") do |form| %>
+  <% if team.errors.any? %>
+    <div class="alert alert-error">
+      <div>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <div>
+          <h3 class="font-bold">Please fix the following errors:</h3>
+          <ul class="list-disc list-inside">
+            <% team.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="form-control w-full">
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input input-bordered w-full", placeholder: "Engineering Team" %>
+  </div>
+
+  <div class="form-control w-full">
+    <%= form.label :description, class: "label" %>
+    <%= form.text_area :description, class: "textarea textarea-bordered w-full h-32", placeholder: "This team is responsible for..." %>
+  </div>
+
+  <div class="form-control mt-6">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>

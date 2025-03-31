@@ -6,10 +6,12 @@ Envision is a modern Ruby on Rails application aimed at migrating the Gerrit cod
 
 ## Features
 
-- **Modern UI**: Built with Tailwind CSS and daisyUI components
+- **Modern UI**: Built with Tailwind CSS and daisyUI components for a clean, responsive interface
+- **User Authentication**: Complete authentication system with login, registration, and password reset
+- **Team Management**: Create and manage teams with different user roles (admin, member, viewer)
 - **Hierarchical Data Model**: Portfolios > Applications > Projects
 - **Theme Support**: Light/dark mode with daisyUI themes
-- **Responsive Design**: Works on desktop and mobile devices
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
 - **Migration Tools**: Tools to assist in migrating from Gerrit
 
 ## Technology Stack
@@ -17,8 +19,8 @@ Envision is a modern Ruby on Rails application aimed at migrating the Gerrit cod
 - **Backend**: Ruby on Rails
 - **Database**: PostgreSQL
 - **Frontend**: Tailwind CSS, daisyUI, Stimulus.js
-- **Authentication**: Devise (planned)
-- **Authorization**: Pundit (planned)
+- **Authentication**: Devise (implemented)
+- **Authorization**: Role-based via TeamMembership model
 
 ## Getting Started
 
@@ -52,6 +54,12 @@ Envision is a modern Ruby on Rails application aimed at migrating the Gerrit cod
    rails db:create db:migrate db:seed
    ```
 
+   This will create sample users and teams for testing:
+
+   - Admin user: `admin@example.com` (password: `password`)
+   - Regular user: `john@example.com` (password: `password`)
+   - And several other users with different team roles
+
 4. Start the server
 
    ```bash
@@ -59,6 +67,38 @@ Envision is a modern Ruby on Rails application aimed at migrating the Gerrit cod
    ```
 
 5. Visit `http://localhost:3000` in your browser
+
+## Implemented Features
+
+### Authentication System
+
+A complete authentication system has been implemented using Devise with the following features:
+
+- **User Registration**: New users can create accounts with email, username, and password
+- **Login**: Secure authentication with email/password
+- **Password Reset**: Users can request password reset via email
+- **Remember Me**: Option to stay logged in across sessions
+- **User Profiles**: Basic user profile information
+
+### Team Management
+
+A comprehensive team management system allows users to:
+
+- **Create Teams**: Any user can create a new team
+- **Team Roles**: Three permission levels (admin, member, viewer)
+- **Team Membership**: Users can be invited to join teams
+- **Team Dashboard**: View team members and their roles
+- **Leave/Join Teams**: Users can leave teams or accept invitations
+
+### User Interface
+
+The UI has been built with a focus on usability and aesthetics:
+
+- **Responsive Design**: Works on all device sizes
+- **DaisyUI Components**: Modern, accessible UI components
+- **Consistent Styling**: Uniform design language across all pages
+- **Flash Messages**: User feedback for actions
+- **Navigation**: Intuitive navbar with authentication-aware options
 
 ## Development
 
@@ -79,11 +119,19 @@ rubocop
 The migration from Gerrit to Envision follows these phases:
 
 1. **Analysis** (100% complete)
-2. **Design** (80% complete)
-3. **Implementation** (45% complete)
-4. **UI Development** (60% complete)
+2. **Design** (90% complete)
+3. **Implementation** (65% complete)
+   - Authentication system ✓
+   - Team management ✓
+   - User interface foundations ✓
+   - Hierarchical data model (in progress)
+4. **UI Development** (70% complete)
+   - Authentication forms ✓
+   - Team management interfaces ✓
+   - Landing page ✓
+   - Project interfaces (in progress)
 5. **Data Migration** (20% complete)
-6. **Testing** (10% complete)
+6. **Testing** (15% complete)
 
 ## Project Structure
 
@@ -92,6 +140,36 @@ The project follows a standard Rails application structure with the following ad
 - `docs/`: Documentation for the migration process
 - `app/assets/tailwind/`: Tailwind CSS configuration
 - `app/javascript/controllers/`: Stimulus controllers
+- `app/models/`: Core models including User, Team, and TeamMembership
+- `app/controllers/`: Controllers for teams, team memberships, and home
+- `app/views/devise/`: Customized authentication views
+- `app/views/teams/`: Team management views
+- `app/views/shared/`: Shared components like navbar
+- `db/seeds.rb`: Sample data generation
+
+## Future Plans
+
+The following features are planned for upcoming development:
+
+1. **Hierarchical Data Model Implementation**:
+   - Complete the Portfolio, Application, and Project models
+   - Create interfaces for managing these entities
+   - Implement relationships between teams and projects
+
+2. **Code Review Functionality**:
+   - Implement core code review features
+   - Support for commenting on code
+   - Review approval workflows
+
+3. **Gerrit Data Migration**:
+   - Tools for importing existing Gerrit data
+   - Compatibility layer for existing integrations
+   - Data validation and verification
+
+4. **Advanced Features**:
+   - CI/CD integration
+   - Automated code quality checks
+   - Performance metrics and dashboards
 
 ## Contributing
 

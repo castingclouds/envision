@@ -1,0 +1,68 @@
+<div class="w-full max-w-5xl mx-auto py-8">
+  <div class="flex justify-between items-center mb-8">
+    <div>
+      <div class="flex items-center gap-2">
+        <%= link_to teams_path, class: "text-gray-500 hover:text-primary" do %>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        <% end %>
+        <h1 class="text-3xl font-bold"><%= @team.name %></h1>
+      </div>
+      <% if @team.description.present? %>
+        <p class="text-gray-500 mt-2"><%= @team.description %></p>
+      <% end %>
+    </div>
+    
+    <div class="flex gap-2">
+      <% if @team_membership %>
+        <% if @team_membership.admin? %>
+          <%= link_to "Manage Members", team_team_memberships_path(@team), class: "btn btn-outline" %>
+          <%= link_to "Edit Team", edit_team_path(@team), class: "btn btn-outline" %>
+        <% end %>
+        <%= button_to "Leave Team", leave_team_path(@team), method: :delete, class: "btn btn-error", data: { turbo_confirm: "Are you sure you want to leave this team?" } %>
+      <% else %>
+        <%= button_to "Join Team", join_team_path(@team), method: :post, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="tabs tabs-boxed mb-6">
+    <a class="tab tab-active">Overview</a>
+    <a class="tab">Projects</a>
+    <a class="tab">Members</a>
+    <a class="tab">Settings</a>
+  </div>
+
+  <div class="card bg-base-100 shadow-xl">
+    <div class="card-body">
+      <h2 class="card-title text-xl mb-4">Team Overview</h2>
+      
+      <div class="stats shadow">
+        <div class="stat">
+          <div class="stat-title">Members</div>
+          <div class="stat-value"><%= @team.team_memberships.count %></div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Projects</div>
+          <div class="stat-value">0</div>
+        </div>
+        
+        <div class="stat">
+          <div class="stat-title">Created</div>
+          <div class="stat-value text-lg"><%= @team.created_at.strftime("%b %d, %Y") %></div>
+        </div>
+      </div>
+
+      <div class="divider">Recent Activity</div>
+      
+      <div class="text-center py-8 text-gray-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <p>No recent activity to display</p>
+      </div>
+    </div>
+  </div>
+</div>
