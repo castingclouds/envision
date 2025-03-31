@@ -1,0 +1,35 @@
+<%# Custom Input Component with clean focus state (just border color change, no halo) %>
+<%
+  # Initialize local variables with defaults
+  input_class ||= ''
+  placeholder ||= ''
+  type ||= 'text'
+  name ||= ''
+  id ||= ''
+  value ||= ''
+  required ||= false
+  autofocus ||= false
+  
+  # Combine classes
+  base_classes = "input border-2 focus:outline-none focus:border-accent"
+  
+  # Add special handling for date inputs
+  if type == 'date'
+    # Add specific classes for date inputs to maintain styling when calendar is active
+    base_classes += " focus-within:outline-none focus-within:border-accent active:outline-none active:border-accent"
+  end
+  
+  combined_class = "#{base_classes} #{input_class}"
+%>
+
+<input 
+  type="<%= type %>"
+  name="<%= name %>"
+  id="<%= id %>"
+  value="<%= value %>"
+  placeholder="<%= placeholder %>"
+  class="<%= combined_class %>"
+  <%= 'required' if required %>
+  <%= 'autofocus' if autofocus %>
+  <%= yield if block_given? %>
+/>

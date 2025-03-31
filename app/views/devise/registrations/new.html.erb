@@ -11,35 +11,52 @@
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
 
-        <div class="form-control w-full mb-4">
-          <%= f.label :name, "Full Name", class: "label font-medium text-base" %>
-          <%= f.text_field :name, autofocus: true, class: "input input-bordered w-full bg-base-100", placeholder: "John Doe" %>
-        </div>
+        <%= render 'shared/custom_fieldset', title: "Personal Information", legend_class: "text-primary" do %>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Full Name</span>
+            </label>
+            <%= f.text_field :name, autofocus: true, placeholder: "John Doe",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
 
-        <div class="form-control w-full mb-4">
-          <%= f.label :username, class: "label font-medium text-base" %>
-          <%= f.text_field :username, class: "input input-bordered w-full bg-base-100", placeholder: "johndoe" %>
-        </div>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Username</span>
+            </label>
+            <%= f.text_field :username, placeholder: "johndoe",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
 
-        <div class="form-control w-full mb-4">
-          <%= f.label :email, class: "label font-medium text-base" %>
-          <%= f.email_field :email, autocomplete: "email", class: "input input-bordered w-full bg-base-100", placeholder: "john@example.com" %>
-        </div>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Email</span>
+            </label>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "john@example.com",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+        <% end %>
 
-        <div class="form-control w-full mb-4">
-          <label class="label">
-            <span class="label-text font-medium text-base">Password</span>
-            <% if @minimum_password_length %>
-              <span class="label-text-alt">(<%= @minimum_password_length %> characters minimum)</span>
-            <% end %>
-          </label>
-          <%= f.password_field :password, autocomplete: "new-password", class: "input input-bordered w-full bg-base-100" %>
-        </div>
+        <%= render 'shared/custom_fieldset', title: "Security", legend_class: "text-secondary", container_class: "mt-6" do %>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Password</span>
+              <% if @minimum_password_length %>
+                <span class="label-text-alt">(<%= @minimum_password_length %> characters minimum)</span>
+              <% end %>
+            </label>
+            <%= f.password_field :password, autocomplete: "new-password",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
 
-        <div class="form-control w-full mb-4">
-          <%= f.label :password_confirmation, "Confirm Password", class: "label font-medium text-base" %>
-          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "input input-bordered w-full bg-base-100" %>
-        </div>
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text font-medium">Confirm Password</span>
+            </label>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+        <% end %>
 
         <div class="form-control mt-6">
           <%= f.submit "Create Account", class: "btn btn-primary w-full" %>

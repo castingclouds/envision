@@ -1,0 +1,20 @@
+<%# Custom Fieldset Component that provides a cleaner focus state with border color changes %>
+<%
+  # Initialize local variables with defaults
+  container_class ||= 'mb-4'
+  legend_class ||= ''
+  content_class ||= ''
+  # Ensure title is provided
+  title = local_assigns.fetch(:title, 'Fieldset')
+%>
+
+<div class="custom-fieldset <%= container_class %>">
+  <fieldset class="border border-base-300 rounded-lg p-4 focus-within:border-primary transition-colors duration-200">
+    <legend class="px-2 text-lg font-medium <%= legend_class %>">
+      <%= title %>
+    </legend>
+    <div class="<%= content_class %>">
+      <%= yield %>
+    </div>
+  </fieldset>
+</div>

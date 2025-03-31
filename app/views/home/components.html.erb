@@ -1,0 +1,193 @@
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-3xl font-bold mb-8">Component Showcase</h1>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <!-- Default DaisyUI Fieldset -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4">Default DaisyUI Fieldset</h2>
+      
+      <fieldset class="border border-base-300 rounded-lg p-4">
+        <legend class="px-2 text-lg font-medium">Default Fieldset</legend>
+        <div class="form-control w-full mb-4">
+          <label class="label">
+            <span class="label-text">Name</span>
+          </label>
+          <input type="text" placeholder="Enter your name" class="input input-bordered w-full" />
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <input type="email" placeholder="Enter your email" class="input input-bordered w-full" />
+        </div>
+      </fieldset>
+      
+      <div class="mt-4 text-sm">
+        <p class="text-base-content/70">
+          The default fieldset has a static border that doesn't change when fields inside are focused.
+          When focused, DaisyUI adds an outer highlight that can look inconsistent.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Custom Fieldset -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4">Custom DaisyUI Fieldset Component</h2>
+      
+      <%= render 'shared/custom_fieldset', title: "Custom Fieldset" do %>
+        <div class="form-control w-full mb-4">
+          <label class="label">
+            <span class="label-text">Name</span>
+          </label>
+          <%= render 'shared/custom_input', placeholder: "Enter your name", input_class: "w-full bg-base-100" %>
+        </div>
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Email</span>
+          </label>
+          <%= render 'shared/custom_input', type: "email", placeholder: "Enter your email", input_class: "w-full bg-base-100" %>
+        </div>
+      <% end %>
+      
+      <div class="mt-4 text-sm">
+        <p class="text-base-content/70">
+          The custom fieldset changes its border color to the primary color when any field inside is focused.
+          This provides a cleaner, more elegant visual indication of the active section.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Custom Input Component -->
+  <h2 class="text-2xl font-bold mb-6">Custom Input Component</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <!-- Default DaisyUI Input -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4">Default DaisyUI Input</h2>
+      
+      <div class="form-control w-full mb-4">
+        <label class="label">
+          <span class="label-text">Default Input</span>
+        </label>
+        <input type="text" placeholder="Enter text here" class="input input-bordered w-full" />
+      </div>
+      
+      <div class="mt-4 text-sm">
+        <p class="text-base-content/70">
+          The default DaisyUI input has a halo effect when focused, which can be visually distracting.
+          The focus state includes both a border change and an outer glow/shadow.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Custom Input -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4">Custom DaisyUI Input Component</h2>
+      
+      <div class="form-control w-full mb-4">
+        <label class="label">
+          <span class="label-text">Clean Focus Input</span>
+        </label>
+        <%= render 'shared/custom_input', placeholder: "Enter text here", input_class: "w-full bg-base-100" %>
+      </div>
+      
+      <div class="mt-4 text-sm">
+        <p class="text-base-content/70">
+          The custom input simply changes the border color to accent (blue/green depending on theme) when focused.
+          No halo effect or shadow, providing a cleaner and more subtle visual indication.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- More Examples -->
+  <h2 class="text-2xl font-bold mb-6">More Custom Fieldset Examples</h2>
+  
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    <!-- Example with custom colors -->
+    <%= render 'shared/custom_fieldset', 
+        title: "Personal Information", 
+        legend_class: "text-primary font-bold",
+        container_class: "mb-8" do %>
+      <div class="form-control w-full mb-4">
+        <label class="label">
+          <span class="label-text">Full Name</span>
+        </label>
+        <%= render 'shared/custom_input', 
+            placeholder: "Enter your full name", 
+            input_class: "w-full bg-base-100" %>
+      </div>
+      <div class="form-control w-full mb-4">
+        <label class="label">
+          <span class="label-text">Date of Birth</span>
+        </label>
+        <%= render 'shared/custom_input', 
+            type: "date",
+            input_class: "w-full bg-base-100" %>
+      </div>
+      <div class="form-control w-full">
+        <label class="label">
+          <span class="label-text">Phone Number</span>
+        </label>
+        <%= render 'shared/custom_input', 
+            type: "tel",
+            placeholder: "Enter your phone number", 
+            input_class: "w-full bg-base-100" %>
+      </div>
+    <% end %>
+    
+    <!-- Example with nested fieldsets -->
+    <%= render 'shared/custom_fieldset', 
+        title: "Address Information", 
+        legend_class: "text-secondary",
+        container_class: "mb-8" do %>
+      <div class="form-control w-full mb-4">
+        <label class="label">
+          <span class="label-text">Street Address</span>
+        </label>
+        <%= render 'shared/custom_input', 
+            placeholder: "Enter street address", 
+            input_class: "w-full bg-base-100" %>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <%= render 'shared/custom_fieldset', 
+            title: "City & State", 
+            container_class: "mb-4" do %>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text">City</span>
+              </label>
+              <%= render 'shared/custom_input', 
+                  placeholder: "City", 
+                  input_class: "w-full bg-base-100" %>
+            </div>
+            <div class="form-control w-full">
+              <label class="label">
+                <span class="label-text">State</span>
+              </label>
+              <%= render 'shared/custom_input', 
+                  placeholder: "State", 
+                  input_class: "w-full bg-base-100" %>
+            </div>
+          </div>
+        <% end %>
+        
+        <div class="form-control w-full">
+          <label class="label">
+            <span class="label-text">Zip Code</span>
+          </label>
+          <%= render 'shared/custom_input', 
+              placeholder: "Zip Code", 
+              input_class: "w-full bg-base-100" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="mt-12 text-center">
+    <%= link_to "Back to Home", root_path, class: "btn btn-primary" %>
+  </div>
+</div>
