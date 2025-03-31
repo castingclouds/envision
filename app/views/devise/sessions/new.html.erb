@@ -1,0 +1,55 @@
+<div class="min-h-screen flex flex-col items-center justify-center p-4 bg-base-200">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-primary">Envision</h1>
+    <p class="text-lg mt-2">Modern Code Review</p>
+  </div>
+
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+    <div class="card-body p-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Sign In</h2>
+      
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render 'shared/custom_fieldset', title: "Account Credentials" do %>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Username</span>
+            </label>
+            <%= f.text_field :username, autofocus: true, autocomplete: "username", 
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Password</span>
+            </label>
+            <%= f.password_field :password, autocomplete: "current-password", 
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="form-control">
+              <label class="label cursor-pointer justify-start gap-2">
+                <%= f.check_box :remember_me, class: "checkbox checkbox-primary" %>
+                <span class="label-text font-medium">Remember me</span>
+              </label>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="form-control mt-6">
+          <%= f.submit "Sign In", class: "btn btn-primary w-full" %>
+        </div>
+      <% end %>
+      
+      <div class="divider my-6">OR</div>
+      
+      <div class="flex flex-col space-y-2">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-8 text-center">
+    <%= link_to "← Back to Home", root_path, class: "link link-hover text-primary font-medium" %>
+  </div>
+</div>

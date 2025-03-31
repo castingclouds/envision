@@ -1,0 +1,42 @@
+<div class="w-full max-w-5xl mx-auto py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold">Your Teams</h1>
+    <%= link_to "Create New Team", new_team_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @teams.empty? %>
+    <div class="card bg-base-100 shadow-xl">
+      <div class="card-body text-center py-12">
+        <h2 class="card-title text-2xl justify-center mb-4">You don't have any teams yet</h2>
+        <p class="mb-6">Teams help you organize projects and collaborate with others.</p>
+        <%= link_to "Create Your First Team", new_team_path, class: "btn btn-primary mx-auto" %>
+      </div>
+    </div>
+  <% else %>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <% @teams.each do |team| %>
+        <div class="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div class="card-body">
+            <h2 class="card-title text-xl"><%= team.name %></h2>
+            <% if team.description.present? %>
+              <p class="text-sm text-gray-500 mb-4"><%= truncate(team.description, length: 100) %></p>
+            <% end %>
+            <div class="flex items-center text-sm text-gray-500 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <%= pluralize(team.team_memberships.count, 'member') %>
+            </div>
+            <div class="card-actions justify-end">
+              <%= link_to "View", team_path(team), class: "btn btn-sm btn-outline" %>
+              <% membership = current_user.team_memberships.find_by(team: team) %>
+              <% if membership&.admin? %>
+                <%= link_to "Manage", edit_team_path(team), class: "btn btn-sm btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

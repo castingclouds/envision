@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  resources :teams do
+    member do
+      post :join
+      delete :leave
+    end
+    resources :team_memberships, path: 'members', only: [:index, :create, :update, :destroy]
+  end
+  devise_for :users
   get "home/index"
+  get "components" => "home#components", as: :components
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

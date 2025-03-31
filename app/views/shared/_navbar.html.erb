@@ -1,0 +1,106 @@
+<div class="navbar bg-base-100 shadow-md">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      </div>
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+        <li><%= link_to "Home", root_path %></li>
+        <% if user_signed_in? %>
+          <li><%= link_to "Teams", teams_path %></li>
+          <li><%= link_to "Projects", "#" %></li>
+        <% end %>
+      </ul>
+    </div>
+    <%= link_to root_path, class: "btn btn-ghost text-xl" do %>
+      <span class="text-primary font-bold">Envision</span>
+    <% end %>
+  </div>
+  
+  <div class="navbar-center hidden lg:flex">
+    <ul class="menu menu-horizontal px-1">
+      <li><%= link_to "Home", root_path %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Teams", teams_path %></li>
+        <li><%= link_to "Projects", "#" %></li>
+      <% end %>
+      <li><%= link_to "Components", components_path %></li>
+    </ul>
+  </div>
+  
+  <div class="navbar-end">
+    <!-- Theme selector dropdown -->
+    <div class="dropdown dropdown-end mr-2">
+      <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+      </div>
+      <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+        <li class="menu-title">Select Theme</li>
+        <li>
+          <select data-controller="theme" data-action="change->theme#changeTheme" data-theme-target="selector" class="select select-sm w-full">
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="bumblebee">Bumblebee</option>
+            <option value="cupcake">Cupcake</option>
+            <option value="corporate">Corporate</option>
+            <option value="emerald">Emerald</option>
+            <option value="synthwave">Synthwave</option>
+          </select>
+        </li>
+      </ul>
+    </div>
+    
+    <% if user_signed_in? %>
+      <% if current_team %>
+        <div class="dropdown dropdown-end mr-2">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-sm">
+            <span class="font-medium"><%= current_team.name %></span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <% current_user.teams.each do |team| %>
+              <li>
+                <%= link_to team_path(team), class: "#{team == current_team ? 'active' : ''}" do %>
+                  <%= team.name %>
+                  <% if team == current_team %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                  <% end %>
+                <% end %>
+              </li>
+            <% end %>
+            <li class="divider"></li>
+            <li><%= link_to "Create New Team", new_team_path %></li>
+            <li><%= link_to "Manage Teams", teams_path %></li>
+          </ul>
+        </div>
+      <% end %>
+      
+      <div class="dropdown dropdown-end">
+        <div tabindex="0" role="button" class="btn btn-ghost btn-circle avatar placeholder">
+          <div class="bg-neutral text-neutral-content rounded-full w-10">
+            <span><%= current_user.name.first %></span>
+          </div>
+        </div>
+        <ul tabindex="0" class="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+          <li class="p-2 text-sm font-medium text-gray-600">
+            Signed in as <span class="font-bold text-primary"><%= current_user.username %></span>
+          </li>
+          <li class="divider"></li>
+          <li><%= link_to "Profile", edit_user_registration_path %></li>
+          <li><%= link_to "Settings", "#" %></li>
+          <li class="divider"></li>
+          <li><%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "w-full text-left" %></li>
+        </ul>
+      </div>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path, class: "btn btn-ghost" %>
+      <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

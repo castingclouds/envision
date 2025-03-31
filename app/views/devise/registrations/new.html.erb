@@ -1,0 +1,77 @@
+<div class="min-h-screen flex flex-col items-center justify-center p-4 bg-base-200">
+  <div class="text-center mb-8">
+    <h1 class="text-4xl font-bold text-primary">Envision</h1>
+    <p class="text-lg mt-2">Modern Code Review</p>
+  </div>
+
+  <div class="card w-full max-w-md bg-base-100 shadow-xl">
+    <div class="card-body p-8">
+      <h2 class="text-2xl font-bold text-center mb-6">Create Account</h2>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <%= render 'shared/custom_fieldset', title: "Personal Information", legend_class: "text-primary" do %>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Full Name</span>
+            </label>
+            <%= f.text_field :name, autofocus: true, placeholder: "John Doe",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Username</span>
+            </label>
+            <%= f.text_field :username, placeholder: "johndoe",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Email</span>
+            </label>
+            <%= f.email_field :email, autocomplete: "email", placeholder: "john@example.com",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+        <% end %>
+
+        <%= render 'shared/custom_fieldset', title: "Security", legend_class: "text-secondary", container_class: "mt-6" do %>
+          <div class="form-control w-full mb-4">
+            <label class="label">
+              <span class="label-text font-medium">Password</span>
+              <% if @minimum_password_length %>
+                <span class="label-text-alt">(<%= @minimum_password_length %> characters minimum)</span>
+              <% end %>
+            </label>
+            <%= f.password_field :password, autocomplete: "new-password",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+
+          <div class="form-control w-full">
+            <label class="label">
+              <span class="label-text font-medium">Confirm Password</span>
+            </label>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",
+                class: "input border-2 focus:outline-none focus:border-accent w-full bg-base-100" %>
+          </div>
+        <% end %>
+
+        <div class="form-control mt-6">
+          <%= f.submit "Create Account", class: "btn btn-primary w-full" %>
+        </div>
+      <% end %>
+      
+      <div class="divider my-6">OR</div>
+      
+      <div class="flex flex-col space-y-2">
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+  </div>
+  
+  <div class="mt-8 text-center">
+    <%= link_to "← Back to Home", root_path, class: "link link-hover text-primary font-medium" %>
+  </div>
+</div>
