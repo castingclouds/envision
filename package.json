@@ -2,6 +2,7 @@
   "name": "envision",
   "private": true,
   "dependencies": {
-    "daisyui": "^5.0.9"
+    "daisyui": "^5.0.9",
+    "tailwindcss": "^4.0.17"
   }
 }

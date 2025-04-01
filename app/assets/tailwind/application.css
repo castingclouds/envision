@@ -1,9 +1,65 @@
 @import "tailwindcss";
 
+
+@plugin "daisyui/theme" {
+  name: "envision";
+  default: true;
+  prefersdark: true;
+  color-scheme: "dark";
+  --color-base-100: oklch(20% 0.042 265.755);
+  --color-base-200: oklch(27% 0.041 260.031);
+  --color-base-300: oklch(37% 0.044 257.287);
+  --color-base-content: oklch(98% 0.002 247.839);
+  --color-primary: oklch(62% 0.265 303.9);
+  --color-primary-content: oklch(98% 0.002 247.839);
+  --color-secondary: oklch(68% 0.169 237.323);
+  --color-secondary-content: oklch(98% 0.002 247.839);
+  --color-accent: oklch(87% 0.169 91.605);
+  --color-accent-content: oklch(27% 0.077 45.635);
+  --color-neutral: oklch(37% 0.034 259.733);
+  --color-neutral-content: oklch(98% 0.002 247.839);
+  --color-info: oklch(54% 0.245 262.881);
+  --color-info-content: oklch(97% 0.014 254.604);
+  --color-success: oklch(62% 0.194 149.214);
+  --color-success-content: oklch(98% 0.018 155.826);
+  --color-warning: oklch(76% 0.188 70.08);
+  --color-warning-content: oklch(98% 0.022 95.277);
+  --color-error: oklch(57% 0.245 27.325);
+  --color-error-content: oklch(97% 0.013 17.38);
+  --radius-selector: 1rem;
+  --radius-field: 0.25rem;
+  --radius-box: 0.5rem;
+  --size-selector: 0.28125rem;
+  --size-field: 0.28125rem;
+  --border: 0.5px;
+  --depth: 1;
+  --noise: 1;
+}
+
+
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, bumblebee, cupcake, corporate, emerald, synthwave;
+  themes: light --default, dark --prefersdark, envision, bumblebee, cupcake, corporate, emerald, synthwave;
 }
 
 @layer components {
-  /* Add any custom component styles here */
+  input {
+    border-width: 1px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 100%;
+    border-radius: var(--radius-field, 0.25rem);
+    height: 3rem;
+    min-height: 3rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-color: gray;
+    box-shadow: none !important; /* Removes the halo effect */
+  }
+
+  input:focus {
+    outline: none;
+    border-color: var(--color-primary); /* Uses primary color from theme */
+  }
 }
